@@ -2,7 +2,9 @@ package aplication;
 
 import java.io.IOException;
 
+import controllers.IniciarRedController;
 import controllers.LoginVendedorController;
+import controllers.NuevoVendedorController;
 import controllers.RestablecerContrasena2Controller;
 import controllers.RestablecerContrasenaController;
 import javafx.application.Application;
@@ -11,7 +13,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Principal;
-
 public class Aplicacion extends Application{
 
 	private Stage primaryStage;
@@ -27,7 +28,7 @@ public class Aplicacion extends Application{
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Prueba");
 
-		mostrarVentanaLoginV();
+		mostrarVentanaIniciarRed();
 
 	}
 
@@ -93,9 +94,53 @@ public class Aplicacion extends Application{
 
 	}
 	
+	public void mostrarVentanaIniciarRed() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Aplicacion.class.getResource("../views/IniciarRed.fxml"));
+
+			AnchorPane rootLayout = (AnchorPane)loader.load();
+
+			IniciarRedController iniciarRedController= loader.getController();
+			iniciarRedController.setAplicacion(this);
+
+			Scene scene = new Scene(rootLayout);
+			primaryStage.setScene(scene);
+			//primaryStage.setResizable(false);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void mostrarVentanaNuevoVendedor() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Aplicacion.class.getResource("../views/NuevoVendedor.fxml"));
+
+			AnchorPane rootLayout = (AnchorPane)loader.load();
+
+			NuevoVendedorController nuevoVendedorController = loader.getController();
+			nuevoVendedorController.setAplicacion(this);
+
+			Scene scene = new Scene(rootLayout);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+
+	
 	
 	
 	public static void main(String[] args) {
 		launch(args);
 	}
+
 }

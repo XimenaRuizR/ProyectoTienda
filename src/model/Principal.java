@@ -2,6 +2,9 @@ package model;
 
 import java.util.ArrayList;
 
+import exceptions.ClienteException;
+
+
 public class Principal {
 	private String nombre; 
 	private ArrayList<Usuario> listaUsuarios;
@@ -57,6 +60,22 @@ public class Principal {
 			}
 		}
 		
+	}
+	
+	public Usuario crearUsuario(String nombre2, String apellidos, String correo,String cedula, String usuario, String contrasenia) throws ClienteException {
+		Usuario vendedor = new Usuario();
+		vendedor.setNombre(nombre2);
+		vendedor.setApellido(apellidos);
+		vendedor.setCorreo(correo);
+		vendedor.setUsuario(usuario);
+		vendedor.setDocumento(cedula);
+		vendedor.setContrasenia(contrasenia);
+
+		if(verificarCorreo(correo) == true){
+			throw new ClienteException("Vendedor ya existe");
+		}
+		listaUsuarios.add(vendedor);
+		return vendedor;
 	}
 	
 	

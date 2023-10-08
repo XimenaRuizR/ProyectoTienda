@@ -1,6 +1,8 @@
 package controllers;
 
 import java.util.ArrayList;
+
+import exceptions.ClienteException;
 import model.Principal;
 import model.Usuario;
 
@@ -84,6 +86,11 @@ public class ModelFactoryController {
 		public void actualizarContrasenia(String correo, String nuevaContrasenia) {
 			principal.actualizarContrasenia(correo, nuevaContrasenia);
 			
+		}
+
+		public Usuario crearUsuario(String nombre, String apellido, String documento, String direccion,String usuario2,
+				String contrasenia) throws ClienteException {
+			return principal.crearUsuario(nombre, apellido, documento, direccion, usuario2, contrasenia);
 		}
 		
 		

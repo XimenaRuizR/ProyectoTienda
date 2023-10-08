@@ -3,12 +3,12 @@ package controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import aplication.Aplicacion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import redVendedores.aplication.Aplicacion;
 
 public class IniciarRedController {
 
@@ -31,12 +31,12 @@ public class IniciarRedController {
 
     @FXML
     void ingresarAdminEvent(ActionEvent event) {
-    	aplicacion.mostrarVentanaLoginAdmin();
+    	
     }
 
     @FXML
     void ingresarVendedorEvent(ActionEvent event) {
-    	aplicacion.mostrarVentanaLoginVendedor();
+    	aplicacion.mostrarVentanaLoginV();
     }
 
     @FXML
